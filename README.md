@@ -1,4 +1,4 @@
-# PPMAutoFillIn
+# PPMAutoFill
 PPM 自动填写工具，该工具会在每周五下午5：30自动填写PPM，解放这些无聊的重复动作。
 
 ## Useage
