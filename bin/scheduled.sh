@@ -11,3 +11,10 @@ if [ $COUNT -lt 1 ]; then
         echo "fail to add crontab $PROGRAM"
         exit 1
 fi 
+
+
+work_dir=$(pwd)
+script_dir=$(cd "$(dirname "$0")"; pwd)
+source ${script_dir}/SetUserNamePassword.sh
+ppm_jar=ppmauto.jar
+java -jar $script_dir/ppmAuto.jar $username $password
