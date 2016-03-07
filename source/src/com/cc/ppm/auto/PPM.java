@@ -1,9 +1,13 @@
 package com.cc.ppm.auto;
 
+import java.util.Properties;
+
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.safari.SafariDriver;
 
 public class PPM {
 	public static void main(String[] args) {
@@ -31,6 +35,34 @@ public class PPM {
 	}
 
 	private static WebDriver initWebDriver() {
+		String os = getOS();
+		if (os.startsWith("win")){
+			return initWindowsDriver();
+			
+		} else if (os.startsWith("mac") ){
+			return initMacDriver();
+		} else if (os.startsWith("linux")) {
+			return initLinuxDriver();
+		}
+		
+		return null;
+	}
+	
+	private static String getOS() {
+		Properties prop = System.getProperties();
+
+		String os = prop.getProperty("os.name").toLowerCase();
+		return os;
+	}
+	
+	private static WebDriver initMacDriver() {
+		DesiredCapabilities cap = DesiredCapabilities.safari();
+        cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+        WebDriver driver = new SafariDriver(cap);
+        return driver;
+	}
+	
+	private static WebDriver initWindowsDriver() {
 		DesiredCapabilities capability = DesiredCapabilities.internetExplorer();
 		System.setProperty("webdriver.ie.driver", ".\\IEDriverServer.exe");
 		capability
@@ -40,5 +72,12 @@ public class PPM {
 		WebDriver webDriver = new InternetExplorerDriver(capability);
 		webDriver.manage().window().setSize(new Dimension(600, 600));
 		return webDriver;
+	}
+	
+	private static WebDriver initLinuxDriver() {
+		DesiredCapabilities cap = DesiredCapabilities.firefox();
+        cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+        WebDriver driver = new FirefoxDriver(cap);
+        return driver;
 	}
 }
