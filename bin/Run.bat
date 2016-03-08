@@ -10,7 +10,7 @@ if not "%work_dir%"=="%script_dir%" cd /d "%script_dir%"
 set ppm_jar=ppmauto.jar
 
 call findJava\find_java.bat
-call SetUserNamePassword.bat
+call config.bat
 java -jar %ppm_jar% %username% %password%
 @echo on
 exit

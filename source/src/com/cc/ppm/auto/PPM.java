@@ -20,15 +20,17 @@ public class PPM {
 
 		WebDriver webDriver = initWebDriver();
 
-		Login.doLogin(webDriver, args[0], args[1]);
 		try {
+			Login.doLogin(webDriver, args[0], args[1]);
 			Thread.sleep(5000);
+			FillIn.fillIn(webDriver);
+			FillIn.save(webDriver);
+			FillIn.release(webDriver);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		FillIn.fillIn(webDriver);
-		FillIn.save(webDriver);
-		FillIn.release(webDriver);
 
 		webDriver.close();
 		System.exit(0);
@@ -36,32 +38,33 @@ public class PPM {
 
 	private static WebDriver initWebDriver() {
 		String os = getOS();
-		if (os.startsWith("win")){
+		if (os.startsWith("win")) {
 			return initWindowsDriver();
-			
-		} else if (os.startsWith("mac") ){
+		} else if (os.startsWith("mac")) {
 			return initMacDriver();
 		} else if (os.startsWith("linux")) {
 			return initLinuxDriver();
 		}
-		
+
 		return null;
 	}
-	
+
 	private static String getOS() {
 		Properties prop = System.getProperties();
 
 		String os = prop.getProperty("os.name").toLowerCase();
 		return os;
 	}
-	
+
 	private static WebDriver initMacDriver() {
 		DesiredCapabilities cap = DesiredCapabilities.safari();
-        cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-        WebDriver driver = new SafariDriver(cap);
-        return driver;
+		cap.setCapability(
+				InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
+				true);
+		WebDriver driver = new SafariDriver(cap);
+		return driver;
 	}
-	
+
 	private static WebDriver initWindowsDriver() {
 		DesiredCapabilities capability = DesiredCapabilities.internetExplorer();
 		System.setProperty("webdriver.ie.driver", ".\\IEDriverServer.exe");
@@ -73,11 +76,13 @@ public class PPM {
 		webDriver.manage().window().setSize(new Dimension(600, 600));
 		return webDriver;
 	}
-	
+
 	private static WebDriver initLinuxDriver() {
 		DesiredCapabilities cap = DesiredCapabilities.firefox();
-        cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-        WebDriver driver = new FirefoxDriver(cap);
-        return driver;
+		cap.setCapability(
+				InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
+				true);
+		WebDriver driver = new FirefoxDriver(cap);
+		return driver;
 	}
 }
