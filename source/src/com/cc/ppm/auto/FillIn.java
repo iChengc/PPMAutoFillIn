@@ -59,7 +59,7 @@ public class FillIn {
 		.findElement(
 				By.xpath("//*[@id='_pageContent_']/div[1]/div[2]/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td/div"
 						+ "/span/div/div/table/tbody/tr/td/div/div[1]/span/table/tbody/tr[2]/td/div[1]/table/tbody/tr/td[1]/"
-						+ "span[4]/a"));
+						+ "span[4]/a")).click();
 		
 	}
 	

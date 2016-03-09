@@ -25,6 +25,7 @@ public class PPM {
 			Thread.sleep(5000);
 			FillIn.fillIn(webDriver);
 			FillIn.save(webDriver);
+			Thread.sleep(2000);
 			FillIn.release(webDriver);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -33,7 +34,6 @@ public class PPM {
 		}
 
 		webDriver.close();
-		System.exit(0);
 	}
 
 	private static WebDriver initWebDriver() {

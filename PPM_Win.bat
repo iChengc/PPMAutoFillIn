@@ -16,6 +16,7 @@ echo set username=%username%>bin\config.bat
 echo set password=%password%>>bin\config.bat
 
 rem copy the depency libs
+DEL bin\ppmauto_lib\* /Q /F /S
 xcopy source\libs\* bin\ppmauto_lib\ /F /S /E /Q
 
 call bin\findJava\find_java.bat
