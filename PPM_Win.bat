@@ -3,8 +3,8 @@ COLOR 0A
 setlocal enabledelayedexpansion
 
 rem you should change it to your user name and password
-set username=chengcn
-set password=abc1234_
+set username=Your_User_Name
+set password=Your_Password
 
 set work_dir=%cd%
 set script_dir=%~dp0
