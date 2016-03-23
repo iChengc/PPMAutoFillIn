@@ -11,6 +11,7 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class PPM {
 	public static void main(String[] args) {
+		//args = new String[]{"chengcn", "abc1234_"};
 		if (args == null || args.length < 2) {
 			System.out
 					.println("You must provider user name and password. \n e.g:java -jar ppmAuto.jar [username] [password]");
@@ -20,17 +21,30 @@ public class PPM {
 
 		WebDriver webDriver = initWebDriver();
 
-		try {
-			Login.doLogin(webDriver, args[0], args[1]);
-			Thread.sleep(5000);
-			FillIn.fillIn(webDriver);
-			FillIn.save(webDriver);
-			Thread.sleep(2000);
-			FillIn.release(webDriver);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
+		Login.doLogin(webDriver, args[0], args[1]);
+		int retry_times = 3;
+		while (retry_times-- > 0) {
+			try {
+				Thread.sleep(5000);
+				FillIn.fillIn(webDriver);
+				FillIn.save(webDriver);
+				break;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		retry_times = 3;
+		while (retry_times-- > 0) {
+			try {
+				Thread.sleep(2000);
+				FillIn.release(webDriver);
+				break;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		}
 
 		webDriver.close();
@@ -40,10 +54,10 @@ public class PPM {
 		String os = getOS();
 		if (os.startsWith("win")) {
 			return initWindowsDriver();
+		} else if (os.startsWith("linux") || os.startsWith("mac")) {
+			return initLinuxDriver();
 		} else if (os.startsWith("mac")) {
 			return initMacDriver();
-		} else if (os.startsWith("linux")) {
-			return initLinuxDriver();
 		}
 
 		return null;
