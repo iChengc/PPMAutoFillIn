@@ -2,6 +2,10 @@
 work_dir=$(pwd)
 script_dir=$(cd "$(dirname "$0")"; pwd)
 
+# change the user name and password to yours.
+username=Your_user_name
+password=Your_password
+
 # make sure the work directory is in where the script is.
 cd $script_dir
 
