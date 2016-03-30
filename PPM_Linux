@@ -4,10 +4,13 @@ script_dir=$(cd "$(dirname "$0")"; pwd)
 
 # make sure the work directory is in where the script is.
 cd $script_dir
-source account.ini
 
-echo "username=\"$username\"" > $script_dir/bin/config.ini
-echo "password=\"$password\"" >> $script_dir/bin/config.ini
+# change the user name and password to yours.
+username=Your_user_name
+password=Your_password
+
+echo "username=\"$username\"" > $script_dir/bin/config.sh
+echo "password=\"$password\"" >> $script_dir/bin/config.sh
 
 rm -f -r -d ./bin/ppmAuto_lib
 mkdir ./bin/ppmAuto_lib
