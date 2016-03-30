@@ -1,3 +1,4 @@
+#!/bin/bash
 #echo "13 22 * * 1 ${script_dir}/Run.sh">>/etc/crontab
 #!/bin/sh
 script_dir=$(cd "$(dirname "$0")"; pwd)
@@ -15,7 +16,7 @@ PROGRAM=$script_dir/bin/run.sh
 crontab -l > ppmAuto.cmd
 
 #echo new cron into cron file
-echo "00 17 * * */2 ${PROGRAM}" >> ppmAuto.cmd
+echo "00 17 * * */5 ${PROGRAM}" >> ppmAuto.cmd
 #install new cron file
 crontab ppmAuto.cmd
 rm ppmAuto.cmd

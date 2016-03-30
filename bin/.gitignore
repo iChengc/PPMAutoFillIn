@@ -2,3 +2,5 @@
 ppmauto_lib
 config.bat
 config.sh
+config.ini
+.DS_Store
