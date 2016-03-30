@@ -103,20 +103,55 @@ public class FillIn {
 	}
 
 	public static void save(WebDriver webDriver) {
+		String savaBtnXpathString = webDriver instanceof FirefoxDriver ? "//*[@id='_pageContent_']//div[1]/div[2]/table/tbody/tr/td/div/table/tbody/tr[5]/td/table/tbody/tr[2]/"
+								+ "td/div/span/span/div/div/table/tbody/tr/td/div/div[1]/span/span/table/tbody/tr[2]/td/div[1]/table/"
+								+ "tbody/tr/td[1]/span[4]/a" 
+								: "//*[@id='_pageContent_']/div[1]/div[2]/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td/div"
+								+ "/span/div/div/table/tbody/tr/td/div/div[1]/span/table/tbody/tr[2]/td/div[1]/table/tbody/tr/td[1]/"
+								+ "span[4]/a";
 		webDriver
 				.findElement(
-						By.xpath("//*[@id='_pageContent_']/div[1]/div[2]/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td/div"
-								+ "/span/div/div/table/tbody/tr/td/div/div[1]/span/table/tbody/tr[2]/td/div[1]/table/tbody/tr/td[1]/"
-								+ "span[4]/a")).click();
+						By.xpath(savaBtnXpathString)).click();
 
 	}
 
 	public static void release(WebDriver webDriver) {
+		String releaseBtnXpathString = webDriver instanceof FirefoxDriver ? "//*[@id='_pageContent_']//div[1]/div[2]/table/tbody/tr/td/div/table/tbody/tr[5]/td/table/tbody/tr[2]/"
+				+ "td/div/span/span/div/div/table/tbody/tr/td/div/div[1]/span/span/table/tbody/tr[2]/td/div[1]/table/"
+				+ "tbody/tr/td[1]/span[5]/a" 
+				: "//*[@id='_pageContent_']/div[1]/div[2]/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td/div"
+				+ "/span/div/div/table/tbody/tr/td/div/div[1]/span/table/tbody/tr[2]/td/div[1]/table/tbody/tr/td[1]/"
+				+ "span[5]/a";
 		webDriver
 				.findElement(
-						By.xpath("//*[@id='_pageContent_']/div[1]/div[2]/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td/div"
-								+ "/span/div/div/table/tbody/tr/td/div/div[1]/span/table/tbody/tr[2]/td/div[1]/table/tbody/tr/td[1]/"
-								+ "span[5]/a")).click();
+						By.xpath(releaseBtnXpathString)).click();
+
+	}
+	
+
+	public static void nextWeek(WebDriver webDriver) {
+		String releaseBtnXpathString = webDriver instanceof FirefoxDriver ? "//*[@id='_pageContent_']//div[1]/div[2]/table/tbody/tr/td/div/table/tbody/tr[5]/td/table/tbody/tr[2]/"
+				+ "td/div/span/span/div/div/table/tbody/tr/td/div/div[1]/span/span/table/tbody/tr[2]/td/div[1]/table/"
+				+ "tbody/tr/td[1]/span[3]/a" 
+				: "//*[@id='_pageContent_']/div[1]/div[2]/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td/div"
+				+ "/span/div/div/table/tbody/tr/td/div/div[1]/span/table/tbody/tr[2]/td/div[1]/table/tbody/tr/td[1]/"
+				+ "span[3]/a";
+		webDriver
+				.findElement(
+						By.xpath(releaseBtnXpathString)).click();
+
+	}
+	
+	public static void preWeek(WebDriver webDriver) {
+		String releaseBtnXpathString = webDriver instanceof FirefoxDriver ? "//*[@id='_pageContent_']//div[1]/div[2]/table/tbody/tr/td/div/table/tbody/tr[5]/td/table/tbody/tr[2]/"
+				+ "td/div/span/span/div/div/table/tbody/tr/td/div/div[1]/span/span/table/tbody/tr[2]/td/div[1]/table/"
+				+ "tbody/tr/td[1]/span[2]/a" 
+				: "//*[@id='_pageContent_']/div[1]/div[2]/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td/div"
+				+ "/span/div/div/table/tbody/tr/td/div/div[1]/span/table/tbody/tr[2]/td/div[1]/table/tbody/tr/td[1]/"
+				+ "span[2]/a";
+		webDriver
+				.findElement(
+						By.xpath(releaseBtnXpathString)).click();
 
 	}
 }
