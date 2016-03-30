@@ -40,6 +40,7 @@ public class PPM {
 			try {
 				Thread.sleep(2000);
 				FillIn.release(webDriver);
+				Thread.sleep(2000);
 				break;
 			} catch (Exception e) {
 				e.printStackTrace();
