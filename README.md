@@ -9,6 +9,6 @@ PPM 自动填写工具，该工具会在每周五下午5:00自动填写PPM，解
 #### Windows
 * 双击运行PPM_Win.bat， 即可完成定时填写PPM。
 
-##### Linux/Mac
+#### Linux/Mac
 * 确保电脑上已经安装Firfox（火狐）浏览器，若未安装请前往[火狐官网](http://www.firefox.com.cn/download/)下载并安装
 * 双击运行PPM_Linux， 即可完成定时填写PPM。
