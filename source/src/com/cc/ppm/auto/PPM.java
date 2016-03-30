@@ -11,7 +11,6 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class PPM {
 	public static void main(String[] args) {
-		args = new String[]{"chengcn", "abc1234_"};
 		if (args == null || args.length < 2) {
 			System.out
 					.println("You must provider user name and password. \n e.g:java -jar ppmAuto.jar [username] [password]");
